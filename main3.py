@@ -30,6 +30,7 @@ class Window(arcade.Window):
 
         for i in range(NUM_ANIMALS):
             animal = random.choice(animals)
+            
             x = random.randint(MARGIN,SCREEN_WIDTH-MARGIN)
             y = random.randint(MARGIN,SCREEN_HEIGHT-MARGIN)
             dx = random.uniform(-INITIAL_VELOCITY, INITIAL_VELOCITY)
@@ -39,9 +40,11 @@ class Window(arcade.Window):
             self.animal_sprite.center_y = y
             self.animal_sprite.dx = dx
             self.animal_sprite.dy = dy
+            self.animal_sprite.mass=random.randint(1,10)
             self.animal_list.append(self.animal_sprite)            
 
     def update(self, delta_time):
+
         for a in self.animal_list:
             a.center_x += a.dx
             a.center_y += a.dy
@@ -50,8 +53,14 @@ class Window(arcade.Window):
 
             collisions = a.collides_with_list(self.animal_list)
             for c in collisions:
-                a.dx=abs(a.dx)
-                a.dy=abs(a.dy)
+                if a.center_x<c.center_x:
+                    a.dx=(abs(c.dx)*-1)*(c.mass/a.mass)
+                if a.center_x>c.center_x:
+                    a.dx=(abs(c.dx))*(c.mass/a.mass)
+                if a.center_y<c.center_y:
+                    a.dy=(abs(c.dy)*-1)*(c.mass/a.mass)
+                if a.center_y>c.center_y:
+                    a.dy=(abs(c.dy))*(c.mass/a.mass)
 
 
 

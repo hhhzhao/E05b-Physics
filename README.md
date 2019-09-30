@@ -1,4 +1,6 @@
 # E05b-Physics
+
+Hello, this is Hua Zhao. For the assignment I have changed the main1 and main2 and main3. The first file is for balls drop on the bottom of the screen. The second file is balls drop to the ground and bounce back. And the last file is to have 5 sprites with collisions. To make the achivement, I learned the gravity and velocity. m1v1=m2v2 will be the function apply to the main3.py. Having main1 and 2 working, we need the add the acceleration on the objects.
 Exploring 2D physics and collisions.
 
 In *main1.py*, you will need to apply gravity to the balls on the screen. To do so, you will need to find an appropriate gravity constant and assign GRAVITY to that number (line 17). Because of the way the Y axis works in Python Arcade, GRAVITY will need to be a negative number for the balls to fall.
